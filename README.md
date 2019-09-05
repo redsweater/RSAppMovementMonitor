@@ -1,5 +1,5 @@
 # RSAppMovementMonitor
-Gracefully handle user movement of a running Mac app.
+Gracefully handle user movement of a running Mac app. Read more on the [Red Sweater Blog](https://red-sweater.com/blog/3508/app-movement-monitoring).
 
 ## Why?
 
