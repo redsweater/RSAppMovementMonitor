@@ -35,6 +35,9 @@ public class RSAppMovementMonitor: NSObject {
 	let alertInformativeText: String
 	let alertRelaunchButtonText: String
 
+	// Same for the icon - if we wait until the app moves, it will show as generic
+	let appIcon: NSImage
+
 	override public init() {
 		
 		// Establish baseline URLs. Note  that simply asking for Bundle.main.bundleURL will return
@@ -50,6 +53,7 @@ public class RSAppMovementMonitor: NSObject {
 		self.alertMessageText = String(format: informativeTextTemplate, arguments: [appName])
 		self.alertInformativeText = NSLocalizedString("Moving an open application can cause unexpected behavior. Relaunch the application to continue.", comment: "Informative text for app moved while running alert")
 		self.alertRelaunchButtonText = NSLocalizedString("Relaunch", comment: "Relaunch Button")
+		self.appIcon = NSApp.applicationIconImage
 
 		super.init()
 
@@ -139,6 +143,7 @@ public class RSAppMovementMonitor: NSObject {
 
 		quitAlert.messageText = self.alertMessageText
 		quitAlert.informativeText = self.alertInformativeText
+		quitAlert.icon = appIcon
 
 		let modalResponse = quitAlert.runModal()
 		if modalResponse == .alertFirstButtonReturn {
